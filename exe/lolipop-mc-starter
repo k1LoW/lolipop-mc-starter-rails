@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'lolipop/mc/starter'
+
+Lolipop::Mc::Starter::CLI.start
