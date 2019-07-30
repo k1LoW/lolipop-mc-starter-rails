@@ -6,13 +6,17 @@ module Lolipop
         require 'lolipop/mc/starter/check_item/git'
         require 'lolipop/mc/starter/check_item/ruby'
         require 'lolipop/mc/starter/check_item/rails_dir'
+        require 'lolipop/mc/starter/check_item/ssh'
         require 'lolipop/mc/starter/check_item/rails'
+        require 'lolipop/mc/starter/check_item/git_log'
 
         LIST = [
           Lolipop::Mc::Starter::CheckItem::Git,
           Lolipop::Mc::Starter::CheckItem::Ruby,
           Lolipop::Mc::Starter::CheckItem::RailsDir,
-          Lolipop::Mc::Starter::CheckItem::Rails
+          Lolipop::Mc::Starter::CheckItem::SSH,
+          Lolipop::Mc::Starter::CheckItem::Rails,
+          Lolipop::Mc::Starter::CheckItem::GitLog
         ]
 
         def self.check_all

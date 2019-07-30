@@ -9,7 +9,7 @@ module Lolipop
             rescue => e
               raise "まだローカルのGitリポジトリにコミットがないようです #{e.message}"
             end            
-            'ローカルのGitリポジトリにコミットしています'
+            'ローカルのGitリポジトリにコミットがあります'
           end
 
           def hint

@@ -1,6 +1,7 @@
 require 'dry/inflector'
 require 'paint'
 require 'yaml'
+require 'tty-prompt'
 
 require 'lolipop/mc/starter/version'
 require 'lolipop/mc/starter/cli'
