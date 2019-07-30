@@ -1,4 +1,5 @@
 require 'thor'
+require 'lolipop/mc/starter/check_list'
 
 module Lolipop
   module Mc
@@ -6,7 +7,7 @@ module Lolipop
       class CLI < Thor
         desc 'check', 'Check your Rails project'
         def check
-          puts "call check"
+          Lolipop::Mc::Starter::CheckList.check_all
         end
 
         option :version, type: :boolean, aliases: :v

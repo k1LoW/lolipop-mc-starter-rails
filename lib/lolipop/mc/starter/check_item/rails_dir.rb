@@ -1,0 +1,21 @@
+module Lolipop
+  module Mc
+    module Starter
+      module CheckItem
+        class RailsDir < Base
+          def check
+            %w(Rakefile app bin config config.ru db lib log public storage test tmp vendor).each do |f|
+              raise 'カレントディレクトリにRailsプロジェクトのソースコードが設置されていません' unless File.exist?("#{Dir.pwd}/#{f}")
+            end
+            'カレントディレクトリにRailsプロジェクトのソースコードが設置されてます'
+          end
+
+          def hint
+            puts 'Railsプロジェクトのソースコードが設置されているディレクトリに移動して、もう一度 `lolipop-mc-starter check` を実行してください'
+            puts 'もしくは、 `rails new your_app` コマンドでRailsプロジェクトを新規作成してください'
+          end
+        end
+      end
+    end
+  end
+end

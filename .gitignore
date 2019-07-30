@@ -6,6 +6,6 @@
 /pkg/
 /spec/reports/
 /tmp/
-
+.lolipop-mc-starter.yml
 # rspec failure tracking
 .rspec_status
