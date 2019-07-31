@@ -9,6 +9,7 @@ module Lolipop
         require 'lolipop/mc/starter/check_item/ssh'
         require 'lolipop/mc/starter/check_item/rails'
         require 'lolipop/mc/starter/check_item/git_log'
+        require 'lolipop/mc/starter/check_item/git_remote'
 
         LIST = [
           Lolipop::Mc::Starter::CheckItem::Git,
@@ -16,7 +17,8 @@ module Lolipop
           Lolipop::Mc::Starter::CheckItem::RailsDir,
           Lolipop::Mc::Starter::CheckItem::SSH,
           Lolipop::Mc::Starter::CheckItem::Rails,
-          Lolipop::Mc::Starter::CheckItem::GitLog
+          Lolipop::Mc::Starter::CheckItem::GitLog,
+          Lolipop::Mc::Starter::CheckItem::GitRemote
         ]
 
         def self.check_all
