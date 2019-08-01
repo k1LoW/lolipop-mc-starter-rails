@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "lolipop/mc/starter/rails/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "lolipop-mc-starter-rails"
+  spec.name          = 'lolipop-mc-starter-rails'
   spec.version       = Lolipop::Mc::Starter::Rails::VERSION
-  spec.authors       = ["k1low"]
-  spec.email         = ["k1low@pepabo.com"]
+  spec.authors       = ['k1low']
+  spec.email         = ['k1low@pepabo.com']
 
   spec.summary       = 'Lolipop! Managed Cloud Starter for Rails.'
   spec.description   = 'Lolipop! Managed Cloud Starter for Rails.'
