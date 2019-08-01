@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "lolipop/mc/starter/version"
+require "lolipop/mc/starter/rails/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "lolipop-mc-starter"
-  spec.version       = Lolipop::Mc::Starter::VERSION
+  spec.name          = "lolipop-mc-starter-rails"
+  spec.version       = Lolipop::Mc::Starter::Rails::VERSION
   spec.authors       = ["k1low"]
   spec.email         = ["k1low@pepabo.com"]
 
-  spec.summary       = 'Lolipop! Managed Cloud Rails Starter.'
-  spec.description   = 'Lolipop! Managed Cloud Rails Starter.'
-  spec.homepage      = 'https://github.com/k1LoW/lolipop-mc-starter'
+  spec.summary       = 'Lolipop! Managed Cloud Starter for Rails.'
+  spec.description   = 'Lolipop! Managed Cloud Starter for Rails.'
+  spec.homepage      = 'https://github.com/k1LoW/lolipop-mc-starter-rails'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.
