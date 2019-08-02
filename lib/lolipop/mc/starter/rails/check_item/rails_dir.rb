@@ -12,7 +12,7 @@ module Lolipop
             end
 
             def hint
-              puts 'Railsプロジェクトのソースコードが設置されているディレクトリに移動して、もう一度 `lolipop-mc-starter-rails check` を実行してください'
+              puts 'Railsプロジェクトのソースコードが設置されているディレクトリに移動して、もう一度 `mc-rails check` を実行してください'
               puts 'もしくは、 `rails new your_app` コマンドでRailsプロジェクトを新規作成してください'
             end
           end
