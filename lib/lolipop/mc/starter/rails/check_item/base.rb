@@ -25,7 +25,7 @@ module Lolipop
             end
 
             def hint
-              puts "call #{@item_name} hint"
+              puts "まだ #{@item_name} のヒントが書かれていません"
             end
 
             def load_config
