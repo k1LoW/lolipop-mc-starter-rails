@@ -16,7 +16,6 @@ module Lolipop
                 raise "SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください #{e.message}"
               end
               raise '環境変数 `DATABASE_URL` が設定されていません' unless stdout.match(/DATABASE_URL=/)
-              key = File.read(key_path)
               raise '環境変数 `DATABASE_URL` のアダプターがmysql2ではありません' unless stdout.match("DATABASE_URL=mysql2://")
               '環境変数 `DATABASE_URL` が設定されています'
             end
