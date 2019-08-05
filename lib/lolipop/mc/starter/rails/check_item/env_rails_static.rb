@@ -16,7 +16,6 @@ module Lolipop
                 raise "SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください #{e.message}"
               end
               raise '環境変数 `RAILS_SERVE_STATIC_FILES` が設定されていません' unless stdout.match(/RAILS_SERVE_STATIC_FILES=/)
-              key = File.read(key_path)
               raise '環境変数 `RAILS_SERVE_STATIC_FILES` が `true` ではありません' unless stdout.match("RAILS_SERVE_STATIC_FILES=true")
               '環境変数 `RAILS_SERVE_STATIC_FILES=true` が設定されています'
             end

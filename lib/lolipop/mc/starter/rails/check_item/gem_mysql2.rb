@@ -6,7 +6,7 @@ module Lolipop
           class GemMysql2 < Base
             def check
               gemfile_path = "#{Dir.pwd}/Gemfile"
-              raise 'Gemfileがありません' unless File.exist?(key_path)
+              raise 'Gemfileがありません' unless File.exist?(gemfile_path)
               content = File.read(gemfile_path)
               raise 'Gemfileでgem `mysql2`が呼ばれていません' unless content.match("gem 'mysql2'")
               'Gemfileでgem `mysql2`が呼ばれています'
