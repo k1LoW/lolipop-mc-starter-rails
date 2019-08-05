@@ -26,6 +26,11 @@ module Lolipop
               "マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じでないようです\nマネージドクラウド:#{version} ローカル:#{local_version}" unless local_version.include?(version)
               'マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じです'
             end
+
+            def hint
+              puts 'ローカルのRubyのバージョンとマネージドクラウドのRailsプロジェクトのRubyのバージョンを合わせる必要があります'
+              puts 'マネージドクラウドのプロジェクト詳細でRubyのバージョンを確認して、同じRubyをインストールしてください'
+            end
           end
         end
       end

@@ -16,6 +16,11 @@ module Lolipop
               dump_config(config)
               "Rails5.2がインストールされています [#{stdout.strip}]"
             end
+
+            def hint
+              puts 'このコマンドではRails5.2を指定しています'
+              puts '`rails _5.2.3_ new your_app` のようにバージョンを指定することで特定バージョンのRailsプロジェクトを作成できます'
+            end
           end
         end
       end

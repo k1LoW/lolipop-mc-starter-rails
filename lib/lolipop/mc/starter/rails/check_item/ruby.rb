@@ -12,6 +12,11 @@ module Lolipop
               dump_config(config)
               "マネージドクラウドがサポートしているバージョンのRubyがインストールされています [#{stdout.strip}]"
             end
+
+            def hint
+              puts 'マネージドクラウドがサポートしているRuby2.6.xかRuby2.5.xをインストールしてください'
+              puts 'マネージドクラウドで作成するRailsプロジェクトのRubyのバージョンと合わせるのが望ましいです'
+            end
           end
         end
       end

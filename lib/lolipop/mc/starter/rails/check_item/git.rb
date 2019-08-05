@@ -16,6 +16,12 @@ module Lolipop
               dump_config(config)
               "Gitコマンドがインストールされています [#{stdout.strip}]"
             end
+
+            def hint
+              puts 'ソースコードをバージョン管理するためにGitコマンドを利用します'
+              puts 'またマネージドクラウドのRailsプロジェクトではデプロイの仕組みにGitを活用しています'
+              puts 'Macであれば `brew install git` コマンドなどでGitをインストールしてください'
+            end
           end
         end
       end
