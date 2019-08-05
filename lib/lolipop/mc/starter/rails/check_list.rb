@@ -14,6 +14,7 @@ module Lolipop
           require 'lolipop/mc/starter/rails/check_item/rails_key'
           require 'lolipop/mc/starter/rails/check_item/env_rails_key'
           require 'lolipop/mc/starter/rails/check_item/env_database'
+          require 'lolipop/mc/starter/rails/check_item/gem_mysql2'
 
           LIST = [
             Lolipop::Mc::Starter::Rails::CheckItem::Git,
@@ -25,7 +26,8 @@ module Lolipop
             Lolipop::Mc::Starter::Rails::CheckItem::GitRemote,
             Lolipop::Mc::Starter::Rails::CheckItem::RailsKey,
             Lolipop::Mc::Starter::Rails::CheckItem::EnvRailsKey,
-            Lolipop::Mc::Starter::Rails::CheckItem::EnvDatabase
+            Lolipop::Mc::Starter::Rails::CheckItem::EnvDatabase,
+            Lolipop::Mc::Starter::Rails::CheckItem::GemMysql2
           ]
 
           def self.check_all
