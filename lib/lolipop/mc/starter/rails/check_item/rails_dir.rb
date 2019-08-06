@@ -5,8 +5,11 @@ module Lolipop
         module CheckItem
           class RailsDir < Base
             def check
-              %w(Rakefile app bin config config.ru db lib log public storage test tmp vendor).each do |f|
+              %w(Rakefile app bin config config.ru db lib log public tmp vendor).each do |f|
                 raise 'カレントディレクトリにRailsプロジェクトのソースコードが設置されていません' unless File.exist?("#{Dir.pwd}/#{f}")
+              end
+              if %(test spec).all? {|d| !File.exist?("#{Dir.pwd}/#{f}") }
+                raise 'カレントディレクトリにRailsプロジェクトのソースコードが設置されていません。テストコード用のディレクトリはありますか？'
               end
               'カレントディレクトリにRailsプロジェクトのソースコードが設置されてます'
             end
