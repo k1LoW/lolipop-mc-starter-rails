@@ -13,7 +13,7 @@ module Lolipop
           end
 
           desc 'database', 'Generate DATABASE_URL'
-          def check
+          def database
             Lolipop::Mc::Starter::Rails::Generators::DatabaseURL.run
           end
 
