@@ -23,8 +23,7 @@ module Lolipop
             def hint
               puts 'Railsは環境変数に `DATABASE_URL` を設定すると config/database.yml ではなく `DATABASE_URL` のDB接続設定を優先します'
               puts 'マネージドクラウドのプロジェクト詳細の `データベース` の記載を組み合わせて `DATABASE_URL` を作成して、同じくマネージドクラウドのプロジェクト詳細の `環境変数の設定と管理` で環境変数 `DATABASE_URL` を追加してください'
-              puts '`DATABASE_URL` はマネージドクラウドのプロジェクト詳細の `データベース` の記載から `mysql2://[ユーザ名]:[パスワード]@[データベースのホスト名]/[データベース名]` のようになります'
-              puts '例: `mysql2://33dcdbandusername4854d40bb41698b53a:DataBasePassW0rd@mysql-1.mc.lolipop.lan/33dcdbandusername4854d40bb41698b53a'
+              puts 'DATABASE_URL を作成するために、 `mc-rails database` というコマンドを実行し、インストラクションに従って値を入力してください。'
             end
           end
         end
