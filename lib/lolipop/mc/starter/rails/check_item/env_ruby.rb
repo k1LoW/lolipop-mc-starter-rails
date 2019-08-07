@@ -24,6 +24,12 @@ module Lolipop
               end
               local_version = config['ruby']
               "マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じでないようです\nマネージドクラウド:#{version} ローカル:#{local_version}" unless local_version.include?(version)
+
+              gemfile_path = "#{Dir.pwd}/Gemfile"
+              raise 'Gemfileがありません' unless File.exist?(gemfile_path)
+              content = File.read(gemfile_path)
+              raise 'Gemfileに指定してあるRubyのバージョンとローカルのRubyのバージョンが同じでないようです' unless content.include?("ruby '#{version}'")
+
               'マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じです'
             end
 

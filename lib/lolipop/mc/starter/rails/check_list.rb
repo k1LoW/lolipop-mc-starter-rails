@@ -8,6 +8,7 @@ module Lolipop
           require 'lolipop/mc/starter/rails/check_item/ruby'
           require 'lolipop/mc/starter/rails/check_item/rails_dir'
           require 'lolipop/mc/starter/rails/check_item/ssh'
+          require 'lolipop/mc/starter/rails/check_item/env_ruby'
           require 'lolipop/mc/starter/rails/check_item/rails'
           require 'lolipop/mc/starter/rails/check_item/git_log'
           require 'lolipop/mc/starter/rails/check_item/git_remote'
@@ -22,6 +23,7 @@ module Lolipop
             Lolipop::Mc::Starter::Rails::CheckItem::Ruby,
             Lolipop::Mc::Starter::Rails::CheckItem::RailsDir,
             Lolipop::Mc::Starter::Rails::CheckItem::SSH,
+            Lolipop::Mc::Starter::Rails::CheckItem::EnvRuby,
             Lolipop::Mc::Starter::Rails::CheckItem::Rails,
             Lolipop::Mc::Starter::Rails::CheckItem::GitLog,
             Lolipop::Mc::Starter::Rails::CheckItem::GitRemote,
