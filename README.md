@@ -2,11 +2,11 @@
 
 ## インストール
 
-```ruby
-gem install lolipop-mc-starter-rails
+```console
+$ gem install lolipop-mc-starter-rails
 ```
 
-## Usage
+## 使い方
 
 `lolipop-mc-starter-rails` をインストールしたあとに、 `mc-rails` コマンドが使えるようになります。
 
@@ -14,7 +14,7 @@ gem install lolipop-mc-starter-rails
 
 Railsプロジェクトのソースコードがあるディレクトリで `mc-rails check` を実行すると、ロリポップ！マネージドクラウドにデプロイするまでに必要な設定についてチェックしてくれます
 
-```ruby
+```console
 $ cd your_rails/
 $ mc-rails check
 ```
@@ -23,10 +23,10 @@ $ mc-rails check
 
 Railsプロジェクトのデータベース設定に必要な環境変数 `DATABASE_URL` を簡単に作成できます
 
-```ruby
+```console
 $ mc-rails database
 ```
 
-## License
+## ライセンス
 
 the [MIT License](https://opensource.org/licenses/MIT).
