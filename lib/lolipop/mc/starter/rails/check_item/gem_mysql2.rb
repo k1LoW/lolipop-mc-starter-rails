@@ -14,7 +14,16 @@ module Lolipop
 
             def hint
               puts 'マネージドクラウドのRailsプロジェクトはMySQLが利用できます'
-              puts "本番環境ではMySQLを利用するためGemfileに`gem 'mysql2'`の記載が必要です"
+              puts '本番環境ではMySQLを利用するためmysql2.gemが必要です'
+              puts '以下の2つを実行してください'
+              puts '1. まずGemfileに以下のように追記してください。末尾で構いません'
+              puts ''
+              puts 'group :production do'
+              puts "  gem 'mysql2'"
+              puts 'end'
+              puts ''
+              puts '2. 次に `bundle install --without=production` を実行してください'
+              puts '`bundle install`が成功したら再度 `mc-rails check` を実行してください'
             end
           end
         end
