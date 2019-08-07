@@ -8,7 +8,7 @@ module Lolipop
               %w(Rakefile app bin config config.ru db lib log public tmp vendor).each do |f|
                 raise "カレントディレクトリにRailsプロジェクトのソースコードが設置されていません: #{f}" unless File.exist?("#{Dir.pwd}/#{f}")
               end
-              if %w(test spec).all? {|d| !File.exist?("#{Dir.pwd}/#{f}") }
+              if %w(test spec).all? {|d| !File.exist?("#{Dir.pwd}/#{d}") }
                 raise 'カレントディレクトリにRailsプロジェクトのソースコードが設置されていません。テストコード用のディレクトリはありますか？'
               end
               'カレントディレクトリにRailsプロジェクトのソースコードが設置されてます'
