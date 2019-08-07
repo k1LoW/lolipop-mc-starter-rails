@@ -1,4 +1,4 @@
-# ロリポップ！マネージドクラウド スターター for Ruby on Rails
+# ロリポップ！マネージドクラウド スターター for Ruby on Rails [![Gem](https://img.shields.io/gem/v/lolipop-mc-starter-rails.svg)](https://rubygems.org/gems/lolipop-mc-starter-rails)
 
 ## インストール
 
