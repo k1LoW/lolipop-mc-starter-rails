@@ -9,7 +9,8 @@ module Lolipop
                 stdout = `git log`
               rescue => e
                 raise "まだローカルのGitリポジトリにコミットがないようです #{e.message}"
-              end            
+              end
+              raise "まだローカルのGitリポジトリにコミットがないようです" if stdout == ""
               'ローカルのGitリポジトリにコミットがあります'
             end
 
