@@ -28,7 +28,7 @@ module Lolipop
               gemfile_path = "#{Dir.pwd}/Gemfile"
               raise 'Gemfileがありません' unless File.exist?(gemfile_path)
               content = File.read(gemfile_path)
-              raise 'Gemfileに指定してあるRubyのバージョンとローカルのRubyのバージョンが同じでないようです' unless content.include?("ruby '#{version}'")
+              raise 'Gemfileに指定してあるRubyのバージョンとマネージドクラウドのRubyのバージョンが同じでないようです' unless content.include?("ruby '#{version}'")
 
               'マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じです'
             end
