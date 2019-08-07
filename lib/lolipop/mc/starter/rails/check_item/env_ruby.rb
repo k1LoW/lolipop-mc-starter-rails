@@ -23,7 +23,7 @@ module Lolipop
                 raise '環境変数 `RUBY_VERSION` が設定されていません。マネージドクラウドのプロジェクトがRailsプロジェクトではない可能性があります'
               end
               local_version = config['ruby']
-              "マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じでないようです\nマネージドクラウド:#{version} ローカル:#{local_version}" unless local_version.include?(version)
+              raise "マネージドクラウドのRailsプロジェクトのRubyのバージョンとローカルのRubyのバージョンが同じでないようです\nマネージドクラウド:#{version} ローカル:#{local_version}" unless local_version.include?(version)
 
               gemfile_path = "#{Dir.pwd}/Gemfile"
               raise 'Gemfileがありません' unless File.exist?(gemfile_path)
