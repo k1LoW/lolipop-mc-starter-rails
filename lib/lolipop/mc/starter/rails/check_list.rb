@@ -44,9 +44,12 @@ module Lolipop
                 puts ''
                 puts '[ヒント]'
                 i.hint
-                break
+                return
               end
             end
+            puts ''
+            puts '🚀 ' + Paint['デプロイまでの準備は完了です! `git push lolipop master` コマンドでデプロイできます!!', :green, :bold]
+            puts ''
           end
         end
       end
