@@ -7,12 +7,12 @@ module Lolipop
     module Starter
       module Rails
         class CLI < Thor
-          desc 'check', 'Check your Rails project'
+          desc 'check', 'Railsプロジェクトのディレクトリで実行することで、マネージドクラウドへのデプロイに必要な設定をチェックします'
           def check
             Lolipop::Mc::Starter::Rails::CheckList.check_all
           end
 
-          desc 'database', 'Generate DATABASE_URL'
+          desc 'database', 'Railsのデータベース設定に必要な環境変数 `DATABASE_URL` を簡単に作成します'
           def database
             Lolipop::Mc::Starter::Rails::Generators::DatabaseURL.run
           end
