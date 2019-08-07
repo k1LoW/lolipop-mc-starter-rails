@@ -10,6 +10,7 @@ module Lolipop
               rescue => e
                 raise "Railsコマンドがインストールされていません #{e.message}"
               end
+              raise 'Railsコマンドでエラーが発生しています' unless stdout.match(/^Rails/)
               raise 'Railsのバージョンが5.2.xではありません' unless stdout.match(/5\.2/)
               config = load_config
               config['rails'] = stdout.strip
