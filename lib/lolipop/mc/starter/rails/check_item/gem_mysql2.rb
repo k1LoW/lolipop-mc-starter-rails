@@ -6,10 +6,14 @@ module Lolipop
           class GemMysql2 < Base
             def check
               gemfile_path = "#{Dir.pwd}/Gemfile"
+              gemfile_lock_path = "#{Dir.pwd}/Gemfile.lock"
               raise 'Gemfileがありません' unless File.exist?(gemfile_path)
+              raise 'Gemfile.lockがありません' unless File.exist?(gemfile_path)
               content = File.read(gemfile_path)
-              raise 'Gemfileでgem `mysql2`が呼ばれていません' unless content.match("gem 'mysql2'")
-              'Gemfileでgem `mysql2`が呼ばれています'
+              raise 'Gemfileにgem `mysql2`の記載がありません' unless content.match("gem 'mysql2'")
+              content_lock = File.read(gemfile_lock_path)
+              raise 'Gemfile.lockに`mysql2`の記載がありません。bundule installしていない可能性があります' unless content_lock.match("mysql2")
+              'Gemfileにgem `mysql2`の記載があります'
             end
 
             def hint
