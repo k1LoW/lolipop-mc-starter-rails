@@ -8,16 +8,16 @@ module Lolipop
               config = @config.load
               ssh_command = config['ssh']
 
-              if ssh_command != @config.NOCHECK
+              if ssh_command != @config::NOCHECK
                 begin
-                  stdout = `#{ssh_command} hostname`
+                  stdout, stderr, status = Open3.capture3("#{ssh_command} hostname")
                 rescue => e
                   puts "SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください #{e.message}"
                   ssh_command = ''
                 end
               end
 
-              if [@config.NOCHECK, ''].include?(ssh_command)
+              if [@config::NOCHECK, ''].include?(ssh_command)
                 prompt = TTY::Prompt.new(active_color: :cyan)
                 ssh_command = prompt.ask('SSHコマンドを入力してください(マネージドクラウドのプロジェクト詳細に記載があります):')
                 begin

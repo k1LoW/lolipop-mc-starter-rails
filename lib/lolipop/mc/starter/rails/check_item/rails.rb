@@ -6,7 +6,7 @@ module Lolipop
           class Rails < Base
             def check
               begin 
-                stdout = `#{Dir.pwd}/bin/rails -v`
+                stdout, stderr, status = Open3.capture3("#{Dir.pwd}/bin/rails -v")
               rescue => e
                 raise "Railsコマンドがインストールされていません #{e.message}"
               end

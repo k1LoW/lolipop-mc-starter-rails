@@ -7,11 +7,11 @@ module Lolipop
             def check
               config = @config.load
               ssh_command = config['ssh']
-              if ssh_command == @config.NOCHECK
+              if ssh_command == @config::NOCHECK
                 raise 'SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください'
               end
               begin
-                stdout = `#{ssh_command} env`
+                stdout, stderr, status = Open3.capture3("#{ssh_command} env")
               rescue => e
                 raise "SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください #{e.message}"
               end

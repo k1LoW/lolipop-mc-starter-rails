@@ -6,7 +6,7 @@ module Lolipop
           class GitLog < Base
             def check
               begin
-                stdout = `git log`
+                stdout, stderr, status = Open3.capture3("git log")
               rescue => e
                 raise "まだローカルのGitリポジトリにコミットがないようです #{e.message}"
               end

@@ -6,7 +6,7 @@ module Lolipop
           class Git < Base
             def check
               begin
-                stdout = `git version`
+                stdout, stderr, status = Open3.capture3("git version")
               rescue => e
                 raise "Gitコマンドがみつかりません #{e.message}"
               end            
