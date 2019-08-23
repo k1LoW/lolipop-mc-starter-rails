@@ -5,9 +5,9 @@ module Lolipop
         module CheckItem
           class EnvRuby < Base
             def check
-              config = load_config
+              config = @config.load
               ssh_command = config['ssh']
-              if ssh_command == NOCHECK
+              if ssh_command == @config.NOCHECK
                 raise 'SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください'
               end
               begin

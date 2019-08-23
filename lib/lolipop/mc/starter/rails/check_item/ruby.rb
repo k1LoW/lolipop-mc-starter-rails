@@ -7,9 +7,9 @@ module Lolipop
             def check
               stdout = `ruby -v`
               raise "マネージドクラウドがサポートしているバージョンのRubyがみつかりません [#{stdout.strip}]" unless stdout.match(/ruby 2\.[56]\.\d/)
-              config = load_config
+              config = @config.load
               config['ruby'] = stdout.strip
-              dump_config(config)
+              @config.dump(config)
               "マネージドクラウドがサポートしているバージョンのRubyがインストールされています [#{stdout.strip}]"
             end
 

@@ -5,10 +5,10 @@ module Lolipop
         module CheckItem
           class SSH < Base
             def check
-              config = load_config
+              config = @config.load
               ssh_command = config['ssh']
 
-              if ssh_command != NOCHECK
+              if ssh_command != @config.NOCHECK
                 begin
                   stdout = `#{ssh_command} hostname`
                 rescue => e
@@ -17,7 +17,7 @@ module Lolipop
                 end
               end
 
-              if [NOCHECK, ''].include?(ssh_command)
+              if [@config.NOCHECK, ''].include?(ssh_command)
                 prompt = TTY::Prompt.new(active_color: :cyan)
                 ssh_command = prompt.ask('SSHコマンドを入力してください(マネージドクラウドのプロジェクト詳細に記載があります):')
                 begin
@@ -28,7 +28,7 @@ module Lolipop
               end
               raise 'SSHコマンドの実行に失敗しました。入力したコマンドを確認してください' unless stdout.match(/^gitpush-ruby.+lolipop\.io/)
               config['ssh'] = ssh_command
-              dump_config(config)
+              @config.dump(config)
               "SSHコマンドの設定が完了しています [#{ssh_command}]"
             end
 

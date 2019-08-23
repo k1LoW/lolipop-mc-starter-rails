@@ -4,6 +4,7 @@ require 'yaml'
 require 'tty-prompt'
 
 require 'lolipop/mc/starter/rails/version'
+require 'lolipop/mc/starter/rails/config'
 require 'lolipop/mc/starter/rails/cli'
 
 module Lolipop

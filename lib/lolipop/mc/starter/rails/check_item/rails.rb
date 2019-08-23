@@ -12,9 +12,9 @@ module Lolipop
               end
               raise 'Railsコマンドでエラーが発生しています' unless stdout.match(/^Rails/)
               raise 'Railsのバージョンが5.2.xではありません' unless stdout.match(/5\.2/)
-              config = load_config
+              config = @config.load
               config['rails'] = stdout.strip
-              dump_config(config)
+              @config.dump(config)
               "Rails5.2がインストールされています [#{stdout.strip}]"
             end
 

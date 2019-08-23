@@ -11,9 +11,9 @@ module Lolipop
                 raise "Gitコマンドがみつかりません #{e.message}"
               end            
               raise "Gitコマンドが古いです #{stdout.strip}" unless stdout.match(/git version 2/)
-              config = load_config
+              config = @config.load
               config['git'] = stdout.strip
-              dump_config(config)
+              @config.dump(config)
               "Gitコマンドがインストールされています [#{stdout.strip}]"
             end
 
