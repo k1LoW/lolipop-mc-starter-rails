@@ -1,6 +1,7 @@
 require 'thor'
 require 'lolipop/mc/starter/rails/check_list'
 require 'lolipop/mc/starter/rails/generators'
+require 'lolipop/mc/starter/rails/nodebrew'
 
 module Lolipop
   module Mc
@@ -15,6 +16,11 @@ module Lolipop
           desc 'database', 'Railsのデータベース設定に必要な環境変数 `DATABASE_URL` を簡単に作成します'
           def database
             Lolipop::Mc::Starter::Rails::Generators::DatabaseURL.run
+          end
+
+          desc 'nodebrew', 'マネージドクラウドのRailsプロジェクトにnodebrewをインストールしてNode.jsの最新のstable versionをインストールします'
+          def nodebrew
+            Lolipop::Mc::Starter::Rails::Nodebrew.run
           end
 
           option :version, type: :boolean, aliases: :v

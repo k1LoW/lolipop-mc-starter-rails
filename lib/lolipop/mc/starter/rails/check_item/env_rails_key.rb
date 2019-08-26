@@ -8,13 +8,13 @@ module Lolipop
               key_path = "#{Dir.pwd}/config/master.key"
               raise 'config/master.keyがありません' unless File.exist?(key_path)
 
-              config = load_config
+              config = @config.load
               ssh_command = config['ssh']
-              if ssh_command == NOCHECK
+              if ssh_command == @config::NOCHECK
                 raise 'SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください'
               end
               begin
-                stdout = `#{ssh_command} env`
+                stdout, stderr, status = Open3.capture3("#{ssh_command} env")
               rescue => e
                 raise "SSHコマンドの実行に失敗しました。SSH接続の設定を確認してください #{e.message}"
               end

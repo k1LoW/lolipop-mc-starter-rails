@@ -5,11 +5,11 @@ module Lolipop
         module CheckItem
           class Ruby < Base
             def check
-              stdout = `ruby -v`
+              stdout, stderr, status = Open3.capture3("ruby -v")
               raise "マネージドクラウドがサポートしているバージョンのRubyがみつかりません [#{stdout.strip}]" unless stdout.match(/ruby 2\.[56]\.\d/)
-              config = load_config
+              config = @config.load
               config['ruby'] = stdout.strip
-              dump_config(config)
+              @config.dump(config)
               "マネージドクラウドがサポートしているバージョンのRubyがインストールされています [#{stdout.strip}]"
             end
 

@@ -6,15 +6,15 @@ module Lolipop
           class Rails < Base
             def check
               begin 
-                stdout = `#{Dir.pwd}/bin/rails -v`
+                stdout, stderr, status = Open3.capture3("#{Dir.pwd}/bin/rails -v")
               rescue => e
                 raise "Railsコマンドがインストールされていません #{e.message}"
               end
               raise 'Railsコマンドでエラーが発生しています' unless stdout.match(/^Rails/)
               raise 'Railsのバージョンが5.2.xではありません' unless stdout.match(/5\.2/)
-              config = load_config
+              config = @config.load
               config['rails'] = stdout.strip
-              dump_config(config)
+              @config.dump(config)
               "Rails5.2がインストールされています [#{stdout.strip}]"
             end
 

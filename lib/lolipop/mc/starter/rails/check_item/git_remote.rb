@@ -6,7 +6,7 @@ module Lolipop
           class GitRemote < Base
             def check
               begin
-                stdout = `git remote`
+                stdout, stderr, status = Open3.capture3("git remote")
               rescue => e
                 raise "Gitコマンドがみつかりません #{e.message}"
               end
