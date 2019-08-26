@@ -27,6 +27,14 @@ Railsプロジェクトのデータベース設定に必要な環境変数 `DATA
 $ mc-rails database
 ```
 
+### `mc-rails nodebrew`
+
+Railsプロジェクトに[nodebrew](https://github.com/hokaccha/nodebrew)を利用して、Node.jsのstableバージョンをインストールします
+
+```console
+$ mc-rails nodebrew
+```
+
 ## ライセンス
 
 the [MIT License](https://opensource.org/licenses/MIT).
