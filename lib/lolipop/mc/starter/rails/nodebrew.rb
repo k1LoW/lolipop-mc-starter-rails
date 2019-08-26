@@ -10,8 +10,8 @@ module Lolipop::Mc::Starter::Rails
         end
         install_nodebrew
         check_env_path
-        install_node_stable
-        use_node_stable
+        install_node_lts
+        use_node_lts
         cleanup
       rescue => e
         puts '❌ ' + Paint[e.message, :red]
@@ -43,16 +43,18 @@ module Lolipop::Mc::Starter::Rails
       raise '環境変数 `PATH` の設定が間違っている可能性があります。マネージドクラウドのプロジェクト詳細の `環境変数の設定と管理` を確認してください'
     end
 
-    def self.install_node_stable
-      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodebrew install stable")
+    def self.install_node_lts
+      uri = URI.parse('https://nodejs.org/dist/index.json')
+      @version = JSON.parse(Net::HTTP.get(uri)).find { |item| item['lts'] != false }['version']
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodebrew install #{@version}")
       raise "Node.jsのインストールに失敗しました: #{stdout}" unless (status == 0 || stdout.match('already installed'))
       puts stdout
-      puts '✅ ' + Paint["Node.jsをインストールしました", :green].to_s
+      puts '✅ ' + Paint["Node.jsをインストールしました [#{@version}]", :green].to_s
     end
 
-    def self.use_node_stable
-      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodebrew use stable")
-      raise "nodebrew use stableに失敗しました: #{stderr}" unless status == 0
+    def self.use_node_lts
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodebrew use #{@version}")
+      raise "nodebrew use ltsに失敗しました: #{stderr}" unless status == 0
       puts stdout
 
       stdout, stderr, status = Open3.capture3("#{@ssh_command} which nodejs")
@@ -68,7 +70,7 @@ module Lolipop::Mc::Starter::Rails
       config = @config.load
       config['nodejs'] = stdout.strip
       @config.dump(config)
-      puts '✅ ' + Paint["nodebrew use stableを実行しました。そしてstableバージョンをnodejsコマンドで実行できるようにしました", :green].to_s
+      puts '✅ ' + Paint["nodebrew use #{@version}を実行しました。そしてLTSバージョンをnodejsコマンドで実行できるようにしました", :green].to_s
     end
 
     def self.cleanup
