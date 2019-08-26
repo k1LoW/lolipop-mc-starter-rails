@@ -10,6 +10,9 @@ module Lolipop::Mc::Starter::Rails
         end
         install_nodebrew
         check_env_path
+        install_node_stable
+        use_node_stable
+        cleanup
       rescue => e
         puts '❌ ' + Paint[e.message, :red]
       end
@@ -41,12 +44,36 @@ module Lolipop::Mc::Starter::Rails
     end
 
     def self.install_node_stable
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodebrew install stable")
+      raise "Node.jsのインストールに失敗しました: #{stdout}" unless (status == 0 || stdout.match('already installed'))
+      puts stdout
+      puts '✅ ' + Paint["Node.jsをインストールしました", :green].to_s
     end
 
     def self.use_node_stable
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodebrew use stable")
+      raise "nodebrew use stableに失敗しました: #{stderr}" unless status == 0
+      puts stdout
+
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} which nodejs")
+      raise "nodejsコマンドの差し替えに失敗しました: #{stderr}" unless status == 0
+      unless stdout.match('/var/app/.nodebrew/current/bin/node')
+        stdout, stderr, status = Open3.capture3("#{@ssh_command} ln -s /var/app/.nodebrew/current/bin/node /var/app/.nodebrew/current/bin/nodejs")
+        raise "nodejsコマンドの差し替えに失敗しました: #{stderr}" unless status == 0
+      end
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} nodejs -v")
+      raise "nodejsコマンドの差し替えに失敗しました: #{stderr}" if stdout.match(/^v4/)
+      puts stdout
+
+      config = @config.load
+      config['nodejs'] = stdout.strip
+      @config.dump(config)
+      puts '✅ ' + Paint["nodebrew use stableを実行しました。そしてstableバージョンをnodejsコマンドで実行できるようにしました", :green].to_s
     end
 
     def self.cleanup
+      stdout, stderr, status = Open3.capture3("#{@ssh_command} rf -f /var/app/nodebrew")
+      puts '✅ ' + Paint["cleanupを実行しました", :green].to_s
     end
   end
 end
