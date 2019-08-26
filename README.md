@@ -29,7 +29,7 @@ $ mc-rails database
 
 ### `mc-rails nodebrew`
 
-Railsプロジェクトに[nodebrew](https://github.com/hokaccha/nodebrew)を利用して、Node.jsのstableバージョンをインストールします
+Railsプロジェクトに[nodebrew](https://github.com/hokaccha/nodebrew)を利用して、Node.jsのLTSバージョンをインストールします
 
 ```console
 $ mc-rails nodebrew
